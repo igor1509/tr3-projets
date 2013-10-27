@@ -9,7 +9,18 @@
 root { 
     display: block;
 }
+body
+{   background-color: #a7dce0;
+    background-image: url("images/panneau.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top;
+}
 #logo{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    
     
 }
 #intro
@@ -20,5 +31,24 @@ root {
    font-style: normal;/*style (italic et oblique)*/
    font-weight: bold; /*gras*/
    
+   
 }
+a
+{
+    text-decoration: none;
+}
+#compte_connexion
+{
+    text-align: right;
+    color: steelblue;
+}
+#panier
+{
+ position: absolute;
+ top: 35px;
+ right: 80px;
+ width: 108px;
+ height: 112px;
+}
+
 

@@ -11,8 +11,8 @@
         <span id="intro">Bienvenue chez AquaService</span>
         <a id="compte_connexion" href="#">Mon compte</a>
         <img src="images/panier.png" id="panier" alt="panier du client"/><br/>
-        
         </header>
+        
         
         <?php
         
