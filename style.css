@@ -169,6 +169,17 @@ a
     margin-top: 120px;
   }
 }
+/***********************************vignettes**********************************/
+.theme-dropdown .dropdown-menu {
+  display: block;
+  position: static;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
 /****************************footer**************************************/
 #footer {
   height: 60px;
