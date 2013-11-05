@@ -191,8 +191,10 @@
                     echo '<li ' . $active. '><a href="Produits.php?page=' . $i . '">'. ($i+1) .'</a></li>';
                     
             }
-           echo '<li><a href="#">&raquo;</a></li>
-            </ul>';
+                if(isset($_POST['ordre']))
+                    echo '<li><a href="Produits.php?page=' . ($pageActuelle+1) . '&ordre=' . $_POST['ordre'] .' ">&raquo;</a></li></ul>';
+                else
+                    echo '<li><a href="Produits.php?page=' . ($pageActuelle+1) .' ">&raquo;</a></li></ul>';
            ?> 
     </body>
 </html>
