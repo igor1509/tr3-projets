@@ -21,26 +21,75 @@
       </div>
         <div class="conteneur">
         <div id="menu_articles"> 
-      <div class="dropdown theme-dropdown clearfix">
-        <a id="dropdownMenu1" href="#" role="button" class="sr-only dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Eau douce</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Eau salée</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Koi et bassins</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Matériel</a></li>
-        </ul>
-      </div>
-            
+     <!-- Split button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-danger">Eau douce</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+    <div class="btn-group">
+  <button type="button" class="btn btn-danger">Eau salée</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+     <div class="btn-group">
+  <button type="button" class="btn btn-danger">Plantes</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+     <div class="btn-group">
+  <button type="button" class="btn btn-danger">Matériel</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+
+     <div id="formulaire-ordre">
             <form action="Produits.php" method="post">
-                <select name="ordre">
-                <option value="A">A-Z</option>
+                <select class="form-control" name="ordre">
+                <option value="A" selected>A-Z</option>
                 <option value="Z">Z-A</option>
                 <option value="plus">Le + cher</option>
                 <option value="moins">Le - cher</option>
                 </select>
-            <input type="submit"/>
+            <input class="form-control" type="submit"/>
             </form>
+     </div>
         
         </div>
         <div class="menu_produits">
@@ -50,6 +99,12 @@
                        
                     <?php
                     
+        $nbreArticles=6;
+        $pageActuelle= (empty($_GET['page']) ? 0 :  $_GET['page']);
+        
+        if(!empty($_GET['ordre']))
+            $_POST['ordre'] = $_GET['ordre'];
+                    /*
                      $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun');
                         while($donnees=$rep->fetch())
                         {
@@ -59,22 +114,23 @@
                                  <img src="' .$donnees['image'] .'"/><br/>
                                  <img src="images/offre.jpg"/><img src="images/panier3.jpg"/></div>';
                         }
-                     
-                     if(isset($_POST['ordre'])=="A")
+                     */
+
+                     if(isset($_POST['ordre']) && $_POST['ordre']=="A")
                      {
-                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun');
+                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun DESC LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
                         while($donnees=$rep->fetch())
                         {
                              echo '<div class="article" ><p>'.$donnees['nom_commun'].'<br/>
                                  '.$donnees['taille'].' cm<br/>
                                  '.$donnees['prix'].' €    </p>
-                                 <img src="' .$donnees['image'] .'"/><br/>
+                                 <img class="img-thumbnail" src="' .$donnees['image'] .'"/><br/>
                                  <img src="images/offre.jpg"/><img src="images/panier3.jpg"/></div>';
                         }
                      }
                      else if(isset($_POST['ordre'])=="Z")
                      {
-                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun DESC');
+                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun DESC LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
                         while($donnees=$rep->fetch())
                         {
                              echo '<div class="article" ><p>'.$donnees['nom_commun'].'<br/>
@@ -86,7 +142,7 @@
                      }
                      else if(isset($_POST['ordre'])=="plus")
                          {
-                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY prix');
+                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY prix LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
                         while($donnees=$rep->fetch())
                         {
                              echo '<div class="article" ><p>'.$donnees['nom_commun'].'<br/>
@@ -98,7 +154,7 @@
                      }
                      else if(isset($_POST['ordre'])=="moins")
                          {
-                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY prix DESC');
+                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY prix DESC LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
                         while($donnees=$rep->fetch())
                         {
                              echo '<div class="article" ><p>'.$donnees['nom_commun'].'<br/>
@@ -109,14 +165,34 @@
                         }
                      }
                      
-                    
-                    ?>
-               
+                   
 
-       
+                    ?>
         </div>
         </div>
         </div>
-        
+        <?php
+         
+            $req_count=$bdd->query('SELECT COUNT(*) AS resultat FROM poissons');
+            
+            $donnee_count = $req_count->fetch();
+            
+            $nbPages = ceil($donnee_count['resultat'] / $nbreArticles);
+            
+            echo '<ul class="pagination">
+             <li><a href="#">&laquo;</a></li>';
+            for($i=0;$i<$nbPages;$i++)
+            {
+                $active = ($i==$pageActuelle) ? 'class="active"' : '';
+                
+                if(isset($_POST['ordre']))
+                    echo '<li ' . $active. '><a href="Produits.php?page=' . $i . '&ordre=' . $_POST['ordre'] .' ">'. ($i+1) .'</a></li>';
+                else
+                    echo '<li ' . $active. '><a href="Produits.php?page=' . $i . '">'. ($i+1) .'</a></li>';
+                    
+            }
+           echo '<li><a href="#">&raquo;</a></li>
+            </ul>';
+           ?> 
     </body>
 </html>
