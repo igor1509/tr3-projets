@@ -9,10 +9,17 @@
 root { 
     display: block;
 }
+.header
+{
+    display: inline-block;
+    text-align: right;
+    position: 0px;
+}
+
+
 body
-{   background-color: #a7dce0;
+{   
     background-image: url("images/panneau.png");
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: top;
 }
@@ -39,9 +46,11 @@ a
 }
 #compte_connexion
 {
-    text-align: right;
+    width: 900px; height: 0px;
+    
     color: steelblue;
 }
+
 #panier
 {
  position: absolute;
@@ -50,6 +59,30 @@ a
  width: 108px;
  height: 112px;
 }
+#produits
+{
+    display: inline-block;
+}
+.article{
+    
+    float: left;
+    border: 1px black solid;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    color: steelblue;
+    
+    
+}
+.menu_produits{
+display: inline-block;
+}
+    
+#menu_articles{
+    height:30%;
+    
+}
+
 /***********************carousel**********************************/
 
 /* CUSTOMIZE THE NAVBAR
