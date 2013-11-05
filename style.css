@@ -88,6 +88,11 @@ display: inline-block;
 {
     width: 15%;
 }
+#pagination
+{
+    margin: auto;
+    width: 45%;
+}
 
 /***********************carousel**********************************/
 
@@ -128,6 +133,7 @@ display: inline-block;
   min-width: 100%;
   height: 500px;
 }
+
 
 
 

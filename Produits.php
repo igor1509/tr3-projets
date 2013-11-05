@@ -82,10 +82,16 @@
      <div id="formulaire-ordre">
             <form action="Produits.php" method="post">
                 <select class="form-control" name="ordre">
-                <option value="A" selected>A-Z</option>
+                <option value="A">A-Z</option>
                 <option value="Z">Z-A</option>
                 <option value="plus">Le + cher</option>
                 <option value="moins">Le - cher</option>
+                </select>
+                <select class="form-control" name="liste">
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                    <option value="18">18</option>
+                    <option value="24">24</option>
                 </select>
             <input class="form-control" type="submit"/>
             </form>
@@ -98,27 +104,19 @@
             
                        
                     <?php
-                    
-        $nbreArticles=6;
+                    if(!empty($_POST['liste']))
+                    {
+                        $nbreArticles=$_POST['liste'];
+                    }
+        
         $pageActuelle= (empty($_GET['page']) ? 0 :  $_GET['page']);
         
         if(!empty($_GET['ordre']))
             $_POST['ordre'] = $_GET['ordre'];
-                    /*
-                     $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun');
-                        while($donnees=$rep->fetch())
-                        {
-                             echo '<div class="article" ><p>'.$donnees['nom_commun'].'<br/>
-                                 '.$donnees['taille'].' cm<br/>
-                                 '.$donnees['prix'].' €    </p>
-                                 <img src="' .$donnees['image'] .'"/><br/>
-                                 <img src="images/offre.jpg"/><img src="images/panier3.jpg"/></div>';
-                        }
-                     */
-
+                    
                      if(isset($_POST['ordre']) && $_POST['ordre']=="A")
                      {
-                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun DESC LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
+                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
                         while($donnees=$rep->fetch())
                         {
                              echo '<div class="article" ><p>'.$donnees['nom_commun'].'<br/>
@@ -128,7 +126,7 @@
                                  <img src="images/offre.jpg"/><img src="images/panier3.jpg"/></div>';
                         }
                      }
-                     else if(isset($_POST['ordre'])=="Z")
+                     else if(isset($_POST['ordre']) && $_POST['ordre']=="Z")
                      {
                          $rep = $bdd->query('SELECT * FROM poissons ORDER BY nom_commun DESC LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
                         while($donnees=$rep->fetch())
@@ -140,9 +138,9 @@
                                  <img src="images/offre.jpg"/><img src="images/panier3.jpg"/></div>';
                         }
                      }
-                     else if(isset($_POST['ordre'])=="plus")
+                     else if(isset($_POST['ordre']) && $_POST['ordre']=="plus")
                          {
-                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY prix LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
+                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY prix DESC LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
                         while($donnees=$rep->fetch())
                         {
                              echo '<div class="article" ><p>'.$donnees['nom_commun'].'<br/>
@@ -152,9 +150,9 @@
                                  <img src="images/offre.jpg"/><img src="images/panier3.jpg"/></div>';
                         }
                      }
-                     else if(isset($_POST['ordre'])=="moins")
+                     else if(isset($_POST['ordre']) && $_POST['ordre']=="moins")
                          {
-                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY prix DESC LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
+                         $rep = $bdd->query('SELECT * FROM poissons ORDER BY prix LIMIT ' . ($nbreArticles * $pageActuelle) . ', ' . $nbreArticles);
                         while($donnees=$rep->fetch())
                         {
                              echo '<div class="article" ><p>'.$donnees['nom_commun'].'<br/>
@@ -178,7 +176,7 @@
             $donnee_count = $req_count->fetch();
             
             $nbPages = ceil($donnee_count['resultat'] / $nbreArticles);
-            
+            echo'<div id="pagination">';
             echo '<ul class="pagination">
              <li><a href="#">&laquo;</a></li>';
             for($i=0;$i<$nbPages;$i++)
@@ -186,7 +184,7 @@
                 $active = ($i==$pageActuelle) ? 'class="active"' : '';
                 
                 if(isset($_POST['ordre']))
-                    echo '<li ' . $active. '><a href="Produits.php?page=' . $i . '&ordre=' . $_POST['ordre'] .' ">'. ($i+1) .'</a></li>';
+                    echo '<li ' . $active. '><a href="Produits.php?page=' . $i . '&ordre=' . $_POST['ordre'] .'">'. ($i+1) .'</a></li>';
                 else
                     echo '<li ' . $active. '><a href="Produits.php?page=' . $i . '">'. ($i+1) .'</a></li>';
                     
@@ -195,6 +193,7 @@
                     echo '<li><a href="Produits.php?page=' . ($pageActuelle+1) . '&ordre=' . $_POST['ordre'] .' ">&raquo;</a></li></ul>';
                 else
                     echo '<li><a href="Produits.php?page=' . ($pageActuelle+1) .' ">&raquo;</a></li></ul>';
+              echo'</div>';  
            ?> 
     </body>
 </html>
