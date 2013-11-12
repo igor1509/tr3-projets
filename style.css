@@ -16,11 +16,18 @@ root {
     position: 0px;
 }
 
+.topsite /* taille de l'image*/
+{
+    
+    background-image: url("images/panneau.png");
+    background-repeat: no-repeat;
+    background-size: 100% 80%;
+    
+}
 
 body
 {   
-    background-image: url("images/panneau.png");
-    background-repeat: no-repeat;
+     background-repeat: no-repeat;
     background-position: top;
 }
 #logo{
@@ -226,7 +233,12 @@ display: inline-block;
 }
 
 /****************************footer**************************************/
+
 #footer {
   height: 60px;
   background-color: #f5f5f5;
+
+
+
+  
 }

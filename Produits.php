@@ -20,6 +20,7 @@
         <h1 style="color:white">Poissons eau douce</h1>
       </div>
         <div class="conteneur">
+            <div class="menugauche"></div>              <!-- Div pour le menu deroulant à gauche  -->
         <div id="menu_articles"> 
      <!-- Split button -->
 <div class="btn-group">
@@ -194,6 +195,8 @@
                 else
                     echo '<li><a href="Produits.php?page=' . ($pageActuelle+1) .' ">&raquo;</a></li></ul>';
               echo'</div>';  
-           ?> 
+             
+        ?>
     </body>
+
 </html>
