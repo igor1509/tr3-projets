@@ -22,63 +22,7 @@
         <div class="conteneur">
             <div class="menugauche"></div>              <!-- Div pour le menu deroulant à gauche  -->
         <div id="menu_articles"> 
-     <!-- Split button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-danger">Eau douce</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-    <div class="btn-group">
-  <button type="button" class="btn btn-danger">Eau salée</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-     <div class="btn-group">
-  <button type="button" class="btn btn-danger">Plantes</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-     <div class="btn-group">
-  <button type="button" class="btn btn-danger">Matériel</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
+                                                           <!-- Suppression navbar pour la mettre dans le menu -->
 
      <div id="formulaire-ordre">
             <form action="Produits.php" method="post">
@@ -195,7 +139,7 @@
                 else
                     echo '<li><a href="Produits.php?page=' . ($pageActuelle+1) .' ">&raquo;</a></li></ul>';
               echo'</div>';  
-             
+         
         ?>
     </body>
 

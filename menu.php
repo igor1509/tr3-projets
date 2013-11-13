@@ -10,6 +10,7 @@
                     <div id="compte_connexion" class="header"><a href="#">Mon compte</a></div>
                 </div>
                 <div class="header">
+                  
                     <img src="images/panier2.png" id="panier" alt="panier du client"/><br/>
                 </div>
             
@@ -27,21 +28,29 @@
                     </button>
                     <a class="navbar-brand" href="index.php">AquaService</a>
                   </div>
-                  <div class="navbar-collapse collapse">
+                  <div class="navbar-collapse collapse"> <!-- Modif navbar , ajouter les cliquables -->
                     <ul class="nav navbar-nav">
                       <li class="active"><a href="#">Home</a></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eau douce <b class="caret"></b></a>  <!-- menu déroulant, encore rendre cliquable -->
                         <ul class="dropdown-menu">
-                          <li><a href="#">Poisson</a></li>
+                          <li><a href="#">Poissons</a></li>
+                          <li><a href="#">Invertébrés/a></li>
                           <li><a href="#">Plantes</a></li>
+                          <li><a href="#">Matériel</a></li>
+                          <li><a href="#">Décorations</a></li>
+                          <li><a href="#">Accessoires</a></li>
                         </ul>
                       </li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eau de mer <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Poisson</a></li>
+                 <li><a href="#">Poissons</a></li>
+                          <li><a href="#">Invertébrés/a></li>
                           <li><a href="#">Plantes</a></li>
+                          <li><a href="#">Matériel</a></li>
+                          <li><a href="#">Décorations</a></li>
+                          <li><a href="#">Accessoires</a></li>
                         </ul>
                       </li>
                       <li><a href="#contact">Contact</a></li>

@@ -28,7 +28,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img src="data:image/png;base64," data-src="holder.js/100%x500/auto/#777:#7a7a7a/text:First slide" alt="First slide">
+          <img src="images/discus1.png"  alt="First slide">  <!-- Changement img , supprimer data et introduire la src de l'image -->
           <div class="container">
             <div class="carousel-caption">
               <h1>Example headline.</h1>
